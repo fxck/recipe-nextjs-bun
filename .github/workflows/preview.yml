@@ -41,7 +41,8 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const { context, github } = require('@actions/github');
+            const context = require('@actions/github').context;
+            const github = require('@actions/github');
             github.rest.issues.createComment({
               ...context.repo,
               issue_number: context.issue.number,
@@ -80,7 +81,8 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const { context, github } = require('@actions/github');
+            const context = require('@actions/github').context;
+            const github = require('@actions/github');
             github.rest.issues.createComment({
               ...context.repo,
               issue_number: context.issue.number,
