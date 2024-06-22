@@ -2,7 +2,6 @@ name: PR Workflow
 
 permissions:
   pull-requests: write
-  actions: write
 
 on:
   pull_request:
@@ -37,17 +36,9 @@ jobs:
         run: zcli version
 
       - name: Post comment on PR open
-        uses: actions/github-script@v6
+        uses: thollander/actions-comment-pull-request@v2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const context = require('@actions/github').context;
-            const github = require('@actions/github');
-            github.rest.issues.createComment({
-              ...context.repo,
-              issue_number: context.issue.number,
-              body: 'A pull request has been opened.'
-            });
+          message: 'A pull request has been opened.'
 
   on_close:
     if: github.event.action == 'closed'
@@ -77,14 +68,6 @@ jobs:
         run: zcli version
 
       - name: Post comment on PR close
-        uses: actions/github-script@v6
+        uses: thollander/actions-comment-pull-request@v2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const context = require('@actions/github').context;
-            const github = require('@actions/github');
-            github.rest.issues.createComment({
-              ...context.repo,
-              issue_number: context.issue.number,
-              body: 'A pull request has been closed.'
-            });
+          message: 'A pull request has been closed.'
