@@ -34,7 +34,7 @@ jobs:
           echo "zcli installed successfully."
 
       - name: Verify zcli installation
-        run: zcli --version
+        run: zcli version
 
       - name: Post comment on PR open
         uses: actions/github-script@v6
@@ -73,7 +73,7 @@ jobs:
           echo "zcli installed successfully."
 
       - name: Verify zcli installation
-        run: zcli --version
+        run: zcli version
 
       - name: Post comment on PR close
         uses: actions/github-script@v6
