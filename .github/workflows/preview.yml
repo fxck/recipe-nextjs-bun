@@ -1,4 +1,8 @@
-name: Zerops preview
+name: PR Workflow
+
+permissions:
+  pull-requests: write
+  actions: write
 
 on:
   pull_request:
@@ -30,19 +34,19 @@ jobs:
           echo "zcli installed successfully."
 
       - name: Verify zcli installation
-        run: zcli version
+        run: zcli --version
 
       - name: Post comment on PR open
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            github.issues.createComment({
+            const { context, github } = require('@actions/github');
+            github.rest.issues.createComment({
+              ...context.repo,
               issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
               body: 'A pull request has been opened.'
-            })
+            });
 
   on_close:
     if: github.event.action == 'closed'
@@ -69,16 +73,16 @@ jobs:
           echo "zcli installed successfully."
 
       - name: Verify zcli installation
-        run: zcli version
+        run: zcli --version
 
       - name: Post comment on PR close
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            github.issues.createComment({
+            const { context, github } = require('@actions/github');
+            github.rest.issues.createComment({
+              ...context.repo,
               issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
               body: 'A pull request has been closed.'
-            })
+            });
