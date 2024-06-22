@@ -1,10 +1,7 @@
 zerops:
   - setup: app
     build:
-      os: ubuntu
-      prepareCommands:
-        - curl -fsSL https://bun.sh/install | bash
-        - ln /root/.bun/bin/bun /usr/local/bin/bun
+      base: bun@latest
       buildCommands:
         - bun install
         - bun run build
@@ -14,10 +11,7 @@ zerops:
         - next.config.js
         - node_modules
     run:
-      os: ubuntu
-      prepareCommands:
-        - curl -fsSL https://bun.sh/install | bash
-        - ln /root/.bun/bin/bun /usr/local/bin/bun
+      base: bun@latest
       envVariables:
         NODE_ENV: production
       ports:
