@@ -1,4 +1,4 @@
-# Zerops x Next.js on Bun
+# Zerops x Next.js on Bun
 
 Import project:
 
