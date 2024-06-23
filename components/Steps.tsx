@@ -1,7 +1,7 @@
 import { Code } from "./Code";
 
 const yamlcode = `project:
-  name: nextjs-recipe
+  name: nextjs-bun
 
 services:
   - hostname: app
