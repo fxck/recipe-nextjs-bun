@@ -5,7 +5,7 @@ const yamlcode = `project:
 
 services:
   - hostname: app
-    type: nodejs@20
+    type: bun@1.1
     buildFromGit: https://github.com/fxck/zerops-next-nodejs
     enableSubdomainAccess: true`.trim();
 
