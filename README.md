@@ -8,7 +8,7 @@ project:
 
 services:
   - hostname: app
-    type: bun@latest
+    type: bun@1.1
     buildFromGit: https://github.com/fxck/recipe-nextjs-bun
     enableSubdomainAccess: true
 ```
